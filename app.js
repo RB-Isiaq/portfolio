@@ -13,26 +13,41 @@
 })();
 
 const form = document.querySelector("form");
-const name = document.querySelector("#name");
-const email = document.querySelector("#email");
-const subject = document.querySelector("#subject");
-const message = document.querySelector("#message");
-form.addEventListener("submit", async (e) => {
+
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const res = await fetch(
-    "https://portfolio-form-d941b-default-rtdb.firebaseio.com/message.json",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        name: name.value,
-        email: email.value,
-        subject: subject.value,
-        message: message.value,
-      }),
+  const formInputs = new FormData(e.target);
+  const formValues = Object.fromEntries(formInputs.entries());
+
+  const serviceID = "service_tl70x2r";
+  const templateID = "template_pccn9vs";
+
+  // send the email here
+  emailjs.send(serviceID, templateID, formValues).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      window.alert("Sent succesfully! ✅");
+
+      location.reload();
+    },
+    function (error) {
+      console.log("FAILED...", error);
+      window.alert("Something went wrong! :)");
+
+      location.reload();
     }
   );
-  if (res.ok) {
-    window.alert("Sent succesfully! ✅");
-  }
-  location.reload();
+});
+
+const techIcons = document.querySelectorAll(".tech-icon");
+
+techIcons.forEach((icon, i) => {
+  const timer = setInterval(() => {
+    icon.style.transform = "scale(1.2)";
+  }, 1000 * i);
+});
+techIcons.forEach((icon) => {
+  const timer2 = setInterval(() => {
+    icon.style.transform = "scale(1)";
+  }, 4000);
 });
