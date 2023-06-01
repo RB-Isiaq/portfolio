@@ -300,13 +300,13 @@ section {
 @keyframes scale {
   from {
     transform: translateY(-3px) scale(0.95);
-    opacity: (1);
-    color: var(--color-grey0);
+    opacity: (0.5);
+    color: var(--color-grey-1);
   }
   to {
     transform: translateY(3px) scale(1.05);
-    opacity: (0.5);
-    color: var(--color-grey-1);
+    opacity: (1);
+    color: var(--color-grey0);
   }
 }
 .about-stats .tech-icons .tech-icon img {
