@@ -38,16 +38,3 @@ form.addEventListener("submit", (e) => {
     }
   );
 });
-
-const techIcons = document.querySelectorAll(".tech-icon");
-
-techIcons.forEach((icon, i) => {
-  const timer = setInterval(() => {
-    icon.style.transform = "scale(1.2)";
-  }, 1000 * i);
-});
-techIcons.forEach((icon) => {
-  const timer2 = setInterval(() => {
-    icon.style.transform = "scale(1)";
-  }, 4000);
-});
